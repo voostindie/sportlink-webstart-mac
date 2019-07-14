@@ -45,7 +45,7 @@ Het script `sportlink.sh` doet weinig anders dan Java 8 opstarten met de Java We
 
 ## Over OpenJDK
 
-In de instructies hierboven wordt de Java Runtime Edition (JRE) geïnstalleerd met de Eclipse OpenJ9 VM. Dit is een JRE met *low memory footprint*, *fast startup time* en *high application throughput*. 
+In de instructies hierboven wordt de Java Runtime Edition (JRE) geïnstalleerd met de [Eclipse OpenJ9 VM](https://www.eclipse.org/openj9/). Dit is een JRE met *low memory footprint*, *fast startup time* en *high application throughput*. 
 
 De HotSpot VM is ook beschikbaar. Daarnaast is het ook mogelijk een Java Development Kit (JDK) te installeren.
 
