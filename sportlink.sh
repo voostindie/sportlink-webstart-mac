@@ -5,3 +5,8 @@ DIR=`dirname $0`
     net.sourceforge.jnlp.runtime.Boot \
     -Xnofork \
     -jnlp https://club.sportlink.com/apps/club-production/nevobo.jnlp
+
+# Iced tea's webcache doesn't really work: it caches, but never reuses,
+# resulting in 50 MB download every time. So we might as well through it
+# all away
+rm -rf ~/.cache/icedtea-web/cache
