@@ -7,6 +7,6 @@ DIR=`dirname $0`
     -jnlp https://club.sportlink.com/apps/club-production/nevobo.jnlp
 
 # Iced tea's webcache doesn't really work: it caches, but never reuses,
-# resulting in 50 MB download every time. So we might as well through it
+# resulting in a 50 MB download every time. So we might as well throw it
 # all away
 rm -rf ~/.cache/icedtea-web/cache
