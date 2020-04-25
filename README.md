@@ -1,34 +1,57 @@
-# Sportlink Club Volleybal met OpenJDK op macOS
+# Sportlink Club Volleybal met OpenJDK 8 op macOS
+
+## Introductie
+
+[Sportlink Club](https://www.sportlink.nl) draait als een Java WebStart applicatie. Dit is verouderde technologie die na Java 8 niet meer wordt ondersteund. Er wordt gewerkt aan een webversie van Sportlink Club, maar die is er nog niet op moment van schrijven (14-07-2019). Wat te doen tot die tijd?
+
+Een optie is Oracle Java 8 te installeren (of geïnstalleerd te laten). Maar dan zijn Java en WebStart in de volle breedte beschikbaar op je Mac, en dat is waarschijnlijk niet zo'n goed idee.
+
+Een alternatief is de OpenJDK gebruiken. Nieuwe versies van OpenJDK versie 8 worden nog steeds geleverd, bijvoorbeeld via [AdoptOpenJDK](https://adoptopenjdk.net). Maar helaas werkt dat niet zomaar: de OpenJDK ondersteunt geen WebStart.
+
+Vandaar deze tool. 
+
+## STOP!
+
+Zeer waarschijnlijk heb je deze tool niet nodig. Sinds de creatie ervan is namelijk [OpenWebStart](https://openwebstart.com) verschenen, wat een implementatie van WebStart op actuele versies van Java moet zijn.
+
+Omdat ik zelf Java voor meerdere doeleinden gebruik is OpenWebStart voor mij zelf niet zo heel nuttig, maar voor de gemiddelde gebruiker is het waarschijnlijk precies wat nodig is.
+
+Mijn advies is daarom: probeer eerst OpenWebStart. Mocht dat niet werken, of bevalt het je niet, gebruik dan deze tool.
 
 ## Vereisten
 
 - [Een computer met macOS](https://www.apple.com/nl/mac/)
-- [Homebrew](https://brew.sh)
 
 ## Installatie
 
 - Open een Terminal
+- Installeer SDKMAN!:
+
+```sh
+curl -s "https://get.sdkman.io" | bash
+source ~/.sdkman/bin/sdkman-init.sh
+```
+
 - Installeer OpenJDK 8:
 
 ```sh
-$> brew tap adoptopenjdk/openjdk
-$> brew cask install adoptopenjdk8-openj9-jre
+sdk install java `sdk ls java | grep "8.*.j9-adpt" | cut -f 6 -d "|"`
 ```
 
 - Kloon deze repository ergens op je computer:
 
 ```sh
-$> cd ~/Downloads
-$> git clone https://github.com/voostindie/sportlink-webstart-mac.git
+cd ~/Downloads
+git clone https://github.com/voostindie/sportlink-webstart-mac.git
 ```
 
-## Instructies
+## Instructies voor gebruik
 
 - Open een Terminal
 - Start het Sportlink script:
 
 ```sh
-$> ~/Downloads/sportlink-webstart-mac/sportlink.sh
+~/Downloads/sportlink-webstart-mac/sportlink.sh
 ```
 
 ## Achtergrond
@@ -45,17 +68,15 @@ Het script `sportlink.sh` doet weinig anders dan Java 8 opstarten met de Java We
 
 ## Over OpenJDK
 
-In de instructies hierboven wordt de Java Runtime Edition (JRE) geïnstalleerd met de [Eclipse OpenJ9 VM](https://www.eclipse.org/openj9/). Dit is een JRE met *low memory footprint*, *fast startup time* en *high application throughput*. 
+In de instructies hierboven wordt een Java Development Kit (JDK) geïnstalleerd op basis van de [Eclipse OpenJ9 VM](https://www.eclipse.org/openj9/). Dit is een virtuele machine met *low memory footprint*, *fast startup time* en *high application throughput*. 
 
-De HotSpot VM is ook beschikbaar. Daarnaast is het ook mogelijk een Java Development Kit (JDK) te installeren.
+Na Java 8 wordt WebStart meer ondersteund.
 
-Voor een compleet overzicht van alle JRE's en JDK's van AdoptOpenJDK:
+## Over SDKMAN!
 
-```sh
-brew search adoptopenjdk
-```
+[SDKMAN!](https://sdkman.io) is een tool speciaal gemaakt voor het beheren van JDK's en SDK's voor Java op Unix-systemen. Door Java te installeren met SDKMAN! wordt deze netjes geïsoleerd op je computer en niet centraal beschikbaar gesteld.
 
-Merk op dat WebStart na Java 8 niet meer wordt ondersteund.
+Het installatie om Java 8 te installeren ziet er misschien wat ingewikkeld uit. Dit is enkel gedaan om geen heel specifieke versie van Java 8 te gebruiken. Op dit moment (25-04-2020) is `8.0.252.j9-adpt` de actuele versie, maar dat kan zomaar veranderen.
 
 ## Over IcedTea Web
 
